@@ -1,7 +1,13 @@
 .flg {
   width: 100%;
 }
-
+.flg-container {
+  background-color: #1f1f2f;
+  width: 300px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  flex-wrap: wrap;
+}
 .country-remove-btn-container {
   padding: 10px;
   display: flex;

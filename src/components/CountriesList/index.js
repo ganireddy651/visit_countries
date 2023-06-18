@@ -3,7 +3,7 @@ import {Component} from 'react'
 import './index.css'
 
 class CountriesList extends Component {
-  state = {isVisit: false}
+  state = {isVisit: false, visited: []}
 
   onClickVisit = () => {
     this.setState({isVisit: true})
@@ -11,7 +11,7 @@ class CountriesList extends Component {
 
   render() {
     const {eachCountry} = this.props
-    const {name, imageUrl, isVisited} = eachCountry
+    const {name, isVisited} = eachCountry
     return (
       <>
         <div className="list-container">

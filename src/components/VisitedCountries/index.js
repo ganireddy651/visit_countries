@@ -6,7 +6,7 @@ class VisitedCountries extends Component {
     const {each} = this.props
     const {name, imageUrl, isVisited} = each
     return (
-      <li className="">
+      <li>
         {isVisited ? (
           <div className="flg-container">
             <img className="flg" src={imageUrl} alt="thumbnail" />

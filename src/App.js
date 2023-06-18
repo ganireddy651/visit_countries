@@ -89,11 +89,13 @@ const App = () => (
     </div>
     <div className="visited-countries-container">
       <h1 className="main-heading">Visited Countries</h1>
-      <ul className="countries-list-container">
-        {initialCountriesList.map(each => (
-          <VisitedCountries each={each} key={each.id} />
-        ))}
-      </ul>
+      <div className="card">
+        <ul className="countries-list-container visited-container">
+          {initialCountriesList.map(each => (
+            <VisitedCountries each={each} key={each.id} />
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 )
