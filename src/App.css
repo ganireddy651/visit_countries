@@ -33,3 +33,8 @@ body {
   overflow-y: scroll;
   border-radius: 5px;
 }
+.card {
+  background-color: #1f1f2f;
+  height: 200px;
+  width: 200px;
+}

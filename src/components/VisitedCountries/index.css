@@ -1,0 +1,21 @@
+.flg {
+  width: 100%;
+}
+
+.country-remove-btn-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-btn {
+  background-color: transparent;
+  color: #ffffff;
+  outline: none;
+  height: 25px;
+  width: 60px;
+  font-size: 10px;
+  border-radius: 3px;
+  border: 1px solid #f8fafc;
+}

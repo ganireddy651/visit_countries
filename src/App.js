@@ -1,4 +1,5 @@
 import CountriesList from './components/CountriesList'
+import VisitedCountries from './components/VisitedCountries'
 import './App.css'
 
 // This is the list (static data) used in the application. You can move it to any component if needed.
@@ -88,7 +89,11 @@ const App = () => (
     </div>
     <div className="visited-countries-container">
       <h1 className="main-heading">Visited Countries</h1>
-      <div className="card">{}</div>
+      <ul className="countries-list-container">
+        {initialCountriesList.map(each => (
+          <VisitedCountries each={each} key={each.id} />
+        ))}
+      </ul>
     </div>
   </div>
 )
