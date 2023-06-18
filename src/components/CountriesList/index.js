@@ -1,40 +1,30 @@
-import {Component} from 'react'
-
 import './index.css'
 
-class CountriesList extends Component {
-  state = {isVisit: false, visited: []}
+const CountriesList = props => {
+  const {eachCountry, getIsVisited} = props
+  const {name, isVisited, id} = eachCountry
 
-  onClickVisit = () => {
-    this.setState({isVisit: true})
+  const onButtonClick = () => {
+    getIsVisited(id)
   }
-
-  render() {
-    const {eachCountry} = this.props
-    const {name, isVisited} = eachCountry
-    return (
-      <>
-        <div className="list-container">
-          <li className="list">
-            <p className="country">{name}</p>
-            {isVisited ? (
-              <p className="visited-btn" type="button">
-                Visited
-              </p>
-            ) : (
-              <button
-                onClick={this.onClickVisit}
-                className="button"
-                type="button"
-              >
-                Visit
-              </button>
-            )}
-          </li>
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <div className="list-container">
+        <li className="list">
+          <p className="country">{name}</p>
+          {isVisited ? (
+            <p className="visited-btn" type="button">
+              Visited
+            </p>
+          ) : (
+            <button className="button" type="button" onClick={onButtonClick}>
+              Visit
+            </button>
+          )}
+        </li>
+      </div>
+    </>
+  )
 }
 
 export default CountriesList

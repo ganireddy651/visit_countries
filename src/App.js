@@ -1,3 +1,4 @@
+import {Component} from 'react'
 import CountriesList from './components/CountriesList'
 import VisitedCountries from './components/VisitedCountries'
 import './App.css'
@@ -77,26 +78,71 @@ const initialCountriesList = [
   },
 ]
 
-const App = () => (
-  <div className="app-container">
-    <h1 className="main-heading">Countries</h1>
-    <div>
-      <ul className="countries-list-container countries-container">
-        {initialCountriesList.map(eachCountry => (
-          <CountriesList eachCountry={eachCountry} key={eachCountry.id} />
-        ))}
-      </ul>
-    </div>
-    <div className="visited-countries-container">
-      <h1 className="main-heading">Visited Countries</h1>
-      <div className="card">
-        <ul className="countries-list-container visited-container">
-          {initialCountriesList.map(each => (
-            <VisitedCountries each={each} key={each.id} />
-          ))}
-        </ul>
+class App extends Component {
+  state = {listOfCountries: initialCountriesList}
+
+  getIsVisited = id => {
+    this.setState(preState => ({
+      listOfCountries: preState.listOfCountries.map(each => {
+        if (each.id === id) {
+          return {...each, isVisited: !each.isVisited}
+        }
+        return each
+      }),
+    }))
+  }
+
+  onRemoveCountry = id => {
+    this.setState(preState => ({
+      listOfCountries: preState.listOfCountries.map(each => {
+        if (each.id === id) {
+          return {...each, isVisited: !each.isVisited}
+        }
+        return each
+      }),
+    }))
+  }
+
+  render() {
+    const {listOfCountries} = this.state
+    const visitedCountries = listOfCountries.filter(
+      each => each.isVisited === true,
+    )
+
+    return (
+      <div className="app-container">
+        <h1 className="main-heading">Countries</h1>
+        <div>
+          <ul className="countries-list-container countries-container">
+            {listOfCountries.map(eachCountry => (
+              <CountriesList
+                eachCountry={eachCountry}
+                getIsVisited={this.getIsVisited}
+                key={eachCountry.id}
+              />
+            ))}
+          </ul>
+        </div>
+        <div className="visited-countries-container">
+          <h1 className="main-heading">Visited Countries</h1>
+          <div className="card">
+            {visitedCountries.length === 0 ? (
+              <p className="no-country-found">No Countries Visited Yet!</p>
+            ) : (
+              <ul className="countries-list-container visited-container">
+                {visitedCountries.map(each => (
+                  <VisitedCountries
+                    each={each}
+                    onRemoveCountry={this.onRemoveCountry}
+                    key={each.id}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-)
+    )
+  }
+}
 export default App
